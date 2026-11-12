@@ -4,8 +4,6 @@
    Anything in browser JavaScript can be viewed by visitors.
 ============================================================ */
 const SHIPMENT = {
-  trackingId: "PX208615493",
-  password: "ernesto1234",
   sender: "Princes Leonor",
   origin: "Madrid, Spain",
   recipient: "Ernesto Corte",
@@ -385,16 +383,6 @@ function setLanguage(next) {
   });
 
   $("languageSelect").value = language;
-  $("trackingNumber").placeholder = language === "es"
-    ? "Introduzca su número"
-    : language === "pt"
-      ? "Insira seu número"
-      : "Enter your tracking number";
-  $("trackingPassword").placeholder = language === "es"
-    ? "Introduzca su contraseña"
-    : language === "pt"
-      ? "Insira sua senha"
-      : "Enter your password";
   $("closeModal").setAttribute("aria-label", translations[language].close);
 }
 
@@ -403,24 +391,7 @@ $("languageSelect").addEventListener("change", (event) => {
   setLanguage(event.target.value);
 });
 
-// Show shipment information only after the tracking ID and password match.
-$("trackForm").addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const id = $("trackingNumber").value.trim().toUpperCase();
-  const password = $("trackingPassword").value;
-
-  if (id === SHIPMENT.trackingId && password === SHIPMENT.password) {
-    $("formError").textContent = "";
-    $("results").hidden = false;
-    $("results").scrollIntoView({ behavior: "smooth", block: "start" });
-  } else {
-    $("results").hidden = true;
-    $("formError").textContent = translations[language].errorCredentials;
-  }
-});
-
-// Open the Start Shipment popup from the dashboard button.
+// The shipment dashboard is displayed immediately; no tracking form or credentials are required.\n\n// Open the Start Shipment popup from the dashboard button.
 $("startShipment").addEventListener("click", () => {
   $("paymentModal").hidden = false;
   $("closeModal").focus();
