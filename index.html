@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4d148c"><title>aPRO EX | Seguimiento de envíos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topline"><div class="container top-inner"><span data-i18n="topBrand">SERVICIOS INTERNACIONALES DE ENVÍO FED EX</span><span data-i18n="topRight">Entrega fiable. Seguimiento claro.</span></div></div>
+  <header class="site-header"><div class="container header-inner">
+    <a class="brand" href="#home" aria-label="PRO EX"><span>pro</span><b>ex</b><i></i></a>
+    <nav><a class="active" href="#track" data-i18n="navTrack">Rastrear</a><a href="#how" data-i18n="navShipping">Envíos</a><a href="#support" data-i18n="navSupport">Ayuda</a></nav>
+    <label class="language-control"><span data-i18n="language">Idioma</span><select id="languageSelect" aria-label="Idioma"><option value="es">Español</option><option value="en">English</option><option value="pt">Português</option></select></label>
+    <a class="header-cta" href="#track" data-i18n="headerCta">Rastrear envío <span>→</span></a>
+  </div></header>
+  <main id="home">
+    <section class="hero"><div class="container hero-grid"><div class="hero-copy">
+      <p class="eyebrow" data-i18n="welcome">BIENVENIDO A</p><h1>pro <span>ex</span><small data-i18n="heroTitle">Envíos internacionales, simplificados.</small></h1>
+      <p class="intro" data-i18n="heroText">Consulte la información de su envío y manténgase informado sobre cada actualización confirmada.</p>
+    </div><div class="hero-art" aria-hidden="true"><div class="route route-one"></div><div class="route route-two"></div><div class="parcel"><div class="parcel-tape"></div><div class="parcel-mark">PX</div></div><div class="pin pin-a">●</div><div class="pin pin-b">●</div><div class="art-label"><span class="art-dot"></span><span data-i18n="artLabel">Su envío, bajo seguimiento</span></div></div></div></section>
+    <section class="track-section" id="track"><div class="container"><div class="track-card">
+      <div class="track-heading"><div><p class="eyebrow" data-i18n="tools">SEGUIMIENTO DE ENVÍOS</p><h2 data-i18n="trackTitle">Consulte su envío</h2></div><span class="secure-label"><span>✓</span><span data-i18n="lookup">Acceso al envío</span></span></div>
+      <form id="trackForm" novalidate>
+        <label><span data-i18n="trackingLabel">Número de seguimiento</span><input id="trackingNumber" autocomplete="off" placeholder="Introduzca su número" required></label>
+        <label><span data-i18n="passwordLabel">Contraseña de seguimiento</span><input id="trackingPassword" type="password" autocomplete="off" placeholder="Introduzca su contraseña" required></label>
+        <button type="submit" data-i18n="trackButton">CONSULTAR ENVÍO <span>→</span></button>
+      </form><p class="form-note" data-i18n="loginNote">Introduzca el número de seguimiento y la contraseña proporcionados por PRO EX.</p><p id="formError" class="form-error" role="alert"></p>
+    </div></div></section>
+    <section class="results-section container" id="results" hidden aria-live="polite">
+      <div class="results-top"><div><p class="eyebrow" data-i18n="detailsEyebrow">INFORMACIÓN DEL ENVÍO</p><h2 data-i18n="overview">Resumen del envío</h2></div><span class="status-chip" id="recordStatus" data-i18n="awaiting">Pendiente de despacho</span></div>
+      <div class="status-banner"><div class="status-icon">↗</div><div class="status-main"><span class="muted-label" data-i18n="currentStatus">ESTADO ACTUAL</span><h3 id="statusTitle" data-i18n="awaiting">Pendiente de despacho</h3><p id="statusMessage" data-i18n="awaitingText">El envío está registrado y a la espera de confirmación de despacho.</p></div><div class="delivery-estimate"><span class="muted-label" data-i18n="deliveryEstimate">ENTREGA ESTIMADA</span><strong data-i18n="notAvailable">No disponible</strong><span data-i18n="estimateNote">Se actualizará cuando se confirme el despacho.</span></div></div>
+      <div class="progress-card"><div class="section-heading"><h3 data-i18n="progressTitle">Progreso del envío</h3><span data-i18n="progressNote">Las etapas se actualizarán con información confirmada.</span></div>
+        <div class="progress-line" id="progressLine"><div class="progress-step current"><span class="step-dot">1</span><b data-i18n="stageRegistered">Envío registrado</b><small data-i18n="stageRegisteredNote">Información recibida</small></div><div class="progress-step"><span class="step-dot">2</span><b data-i18n="stageCollected">Recogido</b><small data-i18n="stageCollectedNote">Pendiente</small></div><div class="progress-step"><span class="step-dot">3</span><b data-i18n="stageTransit">En tránsito</b><small data-i18n="stageTransitNote">Pendiente</small></div><div class="progress-step"><span class="step-dot">4</span><b data-i18n="stageDestination">Centro de destino</b><small data-i18n="stageDestinationNote">Pendiente</small></div><div class="progress-step"><span class="step-dot">5</span><b data-i18n="stageDelivery">En reparto</b><small data-i18n="stageDeliveryNote">Pendiente</small></div><div class="progress-step"><span class="step-dot">6</span><b data-i18n="stageDelivered">Entregado</b><small data-i18n="stageDeliveredNote">Pendiente</small></div></div>
+        <div class="movement-note"><span class="movement-dot"></span><div><b data-i18n="latestUpdate">Última actualización</b><p data-i18n="registeredNote">El envío se encuentra registrado. Todavía no hay movimientos de tránsito confirmados.</p></div></div>
+      </div>
+      <div class="details-grid">
+        <article class="info-card"><div class="card-heading"><span class="card-icon">↗</span><h3 data-i18n="senderInfo">Información del remitente</h3></div><div class="person">
+          <!-- SENDER PROFILE IMAGE: change the image path in the src attribute below. -->
+          <img class="portrait" src="assets/profiles/preview (2).webp" alt="Sender profile photo" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <div class="portrait placeholder sender-photo-fallback" hidden>PE</div>
+          <div><b>Princes Leonor</b><small data-i18n="senderRole">Remitente</small></div>
+        </div><dl><div><dt data-i18n="sender">Remitente</dt><dd>Princes Leonor</dd></div><div><dt data-i18n="origin">Origen</dt><dd>Madrid, España</dd></div></dl></article>
+        <article class="info-card"><div class="card-heading"><span class="card-icon orange">⌖</span><h3 data-i18n="recipientInfo">Información del destinatario</h3></div><div class="person"><img class="portrait" src="assets/ernesto-corte.png" alt="Ernesto Corte"><div><b>Ernesto Corte</b><small data-i18n="recipientRole">Destinatario</small></div></div><dl><div><dt data-i18n="recipient">Destinatario</dt><dd>Ernesto Corte</dd></div><div><dt data-i18n="destination">Destino</dt><dd data-i18n="destinationCity">Hermosillo, Sonora, México</dd></div></dl></article>
+      </div>
+      <section class="shipment-extra" aria-label="Shipment and vehicle information">
+        <div class="extra-heading"><p class="eyebrow" data-i18n="contentsEyebrow">CONTENIDO DEL ENVÍO</p><h2 data-i18n="contentsTitle">Contenido del envío</h2><p data-i18n="contentsIntro">Galería ilustrativa de los artículos incluidos en este envío.</p></div>
+        <div class="contents-gallery">
+          <!-- SHIPMENT CONTENT PHOTOS: update these three src paths to change the gallery images. -->
+          <div class="gallery-slot image-slot">
+            <img src="assets/shipment-contents/shipment-contents-01-boxes-and-shipping-labels.png" alt="Shipment boxes and shipping labels" loading="lazy">
+            <span>01</span>
+            <b data-i18n="itemPhoto1">Shipment contents photo 1</b>
+          </div>
+          <div class="gallery-slot image-slot">
+            <img src="assets/shipment-contents/preview (1).webp" alt="Shipment air waybill and delivery notice" loading="lazy">
+            <span>02</span>
+            <b data-i18n="itemPhoto2">Shipment contents photo 2</b>
+          </div>
+          <div class="gallery-slot image-slot">
+            <img src="assets/shipment-contents/shipment-contents-03-shipping-documents.png" alt="Shipment boxes with handling and customer information documents" loading="lazy">
+            <span>03</span>
+            <b data-i18n="itemPhoto3">Shipment contents photo 3</b>
+          </div>
+        </div>
+        <div class="vehicle-block">
+          <div class="extra-heading"><p class="eyebrow" data-i18n="vehicleEyebrow">DATOS DEL ENVÍO DEL VEHÍCULO</p><h2 data-i18n="vehicleTitle">Datos del envío del vehículo</h2></div>
+          <dl class="vehicle-specs">
+            <div><dt data-i18n="make">Marca</dt><dd>Honda</dd></div><div><dt data-i18n="model">Modelo</dt><dd>Civic Sedan</dd></div>
+            <div><dt data-i18n="year">Año</dt><dd>2026</dd></div><div><dt data-i18n="trim">Versión</dt><dd>EX-L</dd></div>
+            <div><dt data-i18n="bodyStyle">Tipo de carrocería</dt><dd data-i18n="bodyStyleValue">Sedán de 4 puertas</dd></div><div><dt data-i18n="transmission">Transmisión</dt><dd data-i18n="automatic">Automática</dd></div>
+            <div><dt data-i18n="exteriorColour">Color exterior</dt><dd data-i18n="whitePearl">Blanco Perla Platino</dd></div><div><dt data-i18n="interiorColour">Color interior</dt><dd data-i18n="black">Negro</dd></div>
+            <div><dt data-i18n="destination">Destino</dt><dd data-i18n="destinationCity">Hermosillo, Sonora, México</dd></div><div><dt data-i18n="transportMethod">Método de transporte</dt><dd data-i18n="groundTransport">Transporte terrestre puerta a puerta (conducido hasta el destino)</dd></div>
+            <div><dt data-i18n="departureDate">Fecha de salida</dt><dd data-i18n="pendingPayment">Pendiente de confirmación</dd></div><div><dt data-i18n="estimatedArrival">Llegada estimada</dt><dd data-i18n="arrivalAfterConfirmation">Se confirmará después de la confirmación correspondiente</dd></div>
+            <div><dt data-i18n="currentStatus">ESTADO ACTUAL</dt><dd data-i18n="awaitingConfirmation">A la espera de confirmación</dd></div>
+          </dl>
+          <div class="extra-heading vehicle-gallery-heading"><h3 data-i18n="vehicleGallery">Galería de fotos del vehículo</h3><p data-i18n="vehicleGalleryIntro">Cinco fotografías del vehículo.</p></div>
+          <div class="vehicle-gallery">
+            <!-- VEHICLE PHOTO 1: add/replace the image at assets/vehicle-photos/vehicle-front.jpg -->
+            <div class="gallery-slot vehicle-slot image-slot">
+              <img src="assets/vehicle-photos/vehicle-front.jpg" alt="Vehicle photo 1" onerror="this.hidden=true">
+              <span>01</span><b data-i18n="frontView">Vista frontal</b>
+            </div>
+            <!-- VEHICLE PHOTO 2: add/replace the image at assets/vehicle-photos/- Copy back.png -->
+            <div class="gallery-slot vehicle-slot image-slot">
+              <img src="assets/vehicle-photos/- Copy back.png" alt="Vehicle photo 2" onerror="this.hidden=true">
+              <span>02</span><b data-i18n="rearView">Vista trasera</b>
+            </div>
+            <!-- VEHICLE PHOTO 3: add/replace the image at assets/vehicle-photos/Copy trunk.png -->
+            <div class="gallery-slot vehicle-slot image-slot">
+              <img src="assets/vehicle-photos/Copy trunk.png" alt="Vehicle photo 3" onerror="this.hidden=true">
+              <span>03</span><b data-i18n="trunkView">Maletero</b>
+            </div>
+            <!-- VEHICLE PHOTO 4: add/replace the image at assets/vehicle-photos/vehicle-rear-seats.jpg -->
+            <div class="gallery-slot vehicle-slot image-slot">
+              <img src="assets/vehicle-photos/vehicle-rear-seats.jpg" alt="Vehicle photo 4" onerror="this.hidden=true">
+              <span>04</span><b data-i18n="interiorView">Interior</b>
+            </div>
+            <!-- VEHICLE PHOTO 5: add/replace the image at assets/vehicle-photos/font.png -->
+            <div class="gallery-slot vehicle-slot image-slot">
+              <img src="assets/vehicle-photos/font.png" alt="Vehicle photo 5" onerror="this.hidden=true">
+              <span>05</span><b data-i18n="dashboardView">Tablero</b>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <div class="dashboard-action"><button class="start-button bottom-start-button" id="startShipment" type="button" data-i18n="startShipment">INICIAR ENVÍO <span>→</span></button></div>
+    </section>
+
+    <section class="how-section" id="how"><div class="container how-grid"><div><p class="eyebrow" data-i18n="clarity">TRANSPARENCIA EN CADA ETAPA</p><h2 data-i18n="howTitle">Información clara para cada envío.</h2></div><div class="how-copy"><p data-i18n="howText">PRO EX reúne la información del remitente, del destinatario y las actualizaciones confirmadas del envío en un solo lugar.</p><div class="feature-row"><span>01</span><div><b data-i18n="featureOne">Seguimiento centralizado</b><p data-i18n="featureOneText">Consulte los datos principales de su envío.</p></div></div><div class="feature-row"><span>02</span><div><b data-i18n="featureTwo">Actualizaciones verificadas</b><p data-i18n="featureTwoText">Las etapas cambian cuando se registra una actualización confirmada.</p></div></div></div></div></section>
+  </main>
+  <footer id="support"><div class="container footer-inner"><a class="brand footer-brand" href="#home"><span>pro</span><b>ex</b><i></i></a><p data-i18n="footerText">PRO EX · Servicios internacionales de envío</p><a href="#track" data-i18n="footerTrack">Consultar otro envío ↑</a></div></footer>
+  <!-- START SHIPMENT POPUP: edit the title, description, main message, supporting information and WhatsApp button text in script.js under the matching translation keys. -->
+  <div class="modal-backdrop" id="paymentModal" hidden><section class="payment-modal" role="dialog" aria-modal="true" aria-labelledby="paymentTitle"><button class="modal-close" id="closeModal" aria-label="Cerrar">×</button><div class="modal-mark">!</div><h2 id="paymentTitle" data-i18n="noPaymentTitle">PAYMENT RECORD NOT FOUND</h2>
+      <p data-i18n="noPaymentText">We are unable to locate a payment record associated with this shipment at the moment.</p>
+      <p data-i18n="paymentSupportText">For further clarification or assistance, please contact your assigned personal agent, who can review the payment status and provide the necessary information.</p>
+      <p data-i18n="paymentClosingText">Thank you for your understanding.</p>
+      <a class="whatsapp-button" href="https://wa.me/2348117090361" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◉</span><span data-i18n="whatsapp">Contact PRO EX Customer Support on WhatsApp</span></a>
+      <small data-i18n="paymentFooter">PRO EX Customer Support</small></section></div>
+  <!-- SHIPMENT PHOTO VIEWER: opens gallery photographs at a larger size. -->
+  <div class="photo-lightbox" id="photoLightbox" hidden role="dialog" aria-modal="true" aria-label="Shipment photograph viewer">
+    <button class="photo-lightbox-close" id="closePhotoLightbox" type="button" aria-label="Close photograph">×</button>
+    <img id="lightboxImage" src="" alt="">
+  </div>
+  <script src="script.js"></script>
+</body></html>
