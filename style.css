@@ -1270,7 +1270,7 @@ footer {
 
 /* ==============================
    LIVE SHIPMENT JOURNEY TIMELINE
-   The flight icon is the only animated timeline element.
+   Only the active stage marker is animated.
    ============================== */
 .progress-line {
   grid-template-columns:repeat(7,minmax(0,1fr));
@@ -1302,7 +1302,7 @@ footer {
 }
 .progress-step.current .airplane-dot {
   font-size:17px;
-  animation:airplane-pop 1.35s ease-in-out infinite;
+  animation:current-stage-pop 1.35s ease-in-out infinite;
 }
 .progress-step.current .airplane-dot::after {
   content:"";
@@ -1310,14 +1310,14 @@ footer {
   inset:-7px;
   border:2px solid rgba(104,43,157,.62);
   border-radius:50%;
-  animation:airplane-ring 1.35s ease-out infinite;
+  animation:current-stage-ring 1.35s ease-out infinite;
   z-index:-1;
 }
-@keyframes airplane-pop {
+@keyframes current-stage-pop {
   0%,100% { transform:scale(1); }
   50% { transform:scale(1.22); }
 }
-@keyframes airplane-ring {
+@keyframes current-stage-ring {
   0% { transform:scale(.72); opacity:.85; }
   100% { transform:scale(1.85); opacity:0; }
 }
@@ -1382,3 +1382,88 @@ footer {
     text-align:left;
   }
 }
+
+/* Current-location photo gallery: two lead images followed by airport/cargo references. */
+.location-gallery {
+  margin:28px 0 30px;
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fff;
+}
+.location-gallery-heading { margin-bottom:18px; }
+.location-gallery-heading h3 {
+  margin:5px 0 7px;
+  color:#24133b;
+  font-size:23px;
+}
+.location-gallery-heading>p:last-child,
+.location-gallery-subheading p {
+  margin:0;
+  color:#706879;
+  font-size:13px;
+}
+.location-feature-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.location-support-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.location-photo {
+  min-width:0;
+  margin:0;
+  overflow:hidden;
+  border:1px solid #e7e0ed;
+  border-radius:13px;
+  background:#faf9fc;
+}
+.location-photo img {
+  display:block;
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  background:#eee8f4;
+  cursor:zoom-in;
+}
+.location-photo-feature img { height:250px; }
+.location-photo figcaption {
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:12px 14px 14px;
+}
+.location-photo figcaption b { color:#30283a; font-size:14px; }
+.location-photo figcaption span { color:#777080; font-size:11px; line-height:1.4; }
+.location-gallery-subheading { margin:22px 0 12px; }
+.location-gallery-subheading h4 { margin:0 0 5px; color:#30283a; font-size:16px; }
+.location-disclaimer { margin:14px 0 0; color:#817989; font-size:11px; line-height:1.5; }
+.progress-step.current .active-location-dot {
+  font-size:21px;
+  animation:current-stage-pop 1.35s ease-in-out infinite;
+}
+.progress-step.current .active-location-dot::after {
+  content:"";
+  position:absolute;
+  inset:-7px;
+  border:2px solid rgba(104,43,157,.62);
+  border-radius:50%;
+  animation:current-stage-ring 1.35s ease-out infinite;
+  z-index:-1;
+}
+@media(max-width:700px) {
+  .location-gallery { padding:17px; margin-top:22px; }
+  .location-feature-grid,.location-support-grid { grid-template-columns:1fr; }
+  .location-photo-feature img { height:210px; }
+  .location-photo img { height:200px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .progress-step.current .active-location-dot,
+  .progress-step.current .active-location-dot::after { animation:none; }
+}
+
+.location-photo .photo-credit { color:#6b4b89; font-size:10px; text-decoration:underline; width:fit-content; }
+.location-photo .photo-credit:hover { color:#4d148c; }
