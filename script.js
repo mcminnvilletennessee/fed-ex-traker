@@ -4,11 +4,13 @@
    Anything in browser JavaScript can be viewed by visitors.
 ============================================================ */
 const SHIPMENT = {
+  trackingId: "PX208615493",
+  password: "ernesto1234",
   sender: "Princes Leonor",
   origin: "Madrid, Spain",
   recipient: "Ernesto Corte",
   destination: "Hermosillo, Sonora, Mexico",
-  status: "arrivedMexicoCity"
+  status: "awaiting"
 };
 /* ============================================================
    START SHIPMENT POPUP TEXT — EDIT HERE
@@ -51,32 +53,18 @@ const translations = {
     notAvailable:"No disponible",
     estimateNote:"Se actualizará cuando se confirme el despacho.",
     progressTitle:"Progreso del envío",
-    progressNote:"Estado actual del recorrido del envío.",
-    inFlight:"Actualmente en vuelo",
-    inFlightText:"El envío se encuentra actualmente en vuelo hacia México.",
-    inMexico:"Actualmente en México",
-    inMexicoText:"El envío ha llegado a Ciudad de México, México.",
-    stageStarted:"Envío iniciado",
-    stageStartedNote:"Completado",
-    stageAirport:"En el aeropuerto de salida",
-    stageAirportNote:"Completado",
-    stageFlight:"Actualmente en vuelo",
-    stageFlightNote:"Completado",
-    stageMexicoCity:"Actualmente en Ciudad de México",
-    stageMexicoCityNote:"Estado actual",
-    stageHermosillo:"Actualmente en Hermosillo, Sonora, México",
-    stageHermosilloNote:"Pendiente",
-    stageCustoms:"Esperando el despacho de aduanas",
-    stageCustomsNote:"Pendiente",
+    progressNote:"Las etapas se actualizarán con información confirmada.",
     stageRegistered:"Envío registrado",
     stageRegisteredNote:"Información recibida",
     stageCollected:"Recogido",
     stageCollectedNote:"Pendiente",
+    stageTransit:"En tránsito",
+    stageTransitNote:"Pendiente",
     stageDestination:"Centro de destino",
     stageDestinationNote:"Pendiente",
     stageDelivery:"En reparto",
     stageDeliveryNote:"Pendiente",
-    stageDelivered:"Paquete entregado",
+    stageDelivered:"Entregado",
     stageDeliveredNote:"Pendiente",
     latestUpdate:"Última actualización",
     registeredNote:"El envío se encuentra registrado. Todavía no hay movimientos de tránsito confirmados.",
@@ -104,22 +92,6 @@ const translations = {
     whatsapp:"Contactar con el servicio de atención al cliente de PRO EX por WhatsApp",
     paymentFooter:"PRO EX Atención al Cliente",
     destinationCity:"Hermosillo, Sonora, México",
-    locationEyebrow:"UBICACIÓN ACTUAL DEL ENVÍO",
-    locationTitle:"Actualmente en Ciudad de México",
-    locationIntro:"Imágenes de referencia de Ciudad de México y del área de llegadas del aeropuerto.",
-    locationCityPhoto:"Ciudad de México",
-    locationCityCaption:"Vista de la ciudad",
-    locationAirportPhoto:"Llegadas del aeropuerto",
-    locationAirportCaption:"Aeropuerto Internacional de Ciudad de México",
-    airportGalleryTitle:"Aeropuerto y operaciones de carga",
-    airportGalleryIntro:"Imágenes ilustrativas del interior del aeropuerto y de aviones de carga.",
-    airportInteriorPhoto:"Interior del aeropuerto",
-    airportInteriorCaption:"Área de llegadas internacionales",
-    fedexPlanePhoto:"Avión de carga FedEx Express",
-    cargoExampleCaption:"Ejemplo de aeronave de carga; no identifica el avión de este envío",
-    cargoHandlingPhoto:"Operaciones de carga aérea",
-    cargoHandlingCaption:"Carga y manejo de mercancías en plataforma",
-    locationDisclaimer:"Estas son imágenes ilustrativas de la ubicación y de operaciones aeroportuarias; no son fotografías del paquete ni confirman el movimiento en tiempo real.",
     contentsEyebrow:"CONTENIDO DEL ENVÍO",
     contentsTitle:"Contenido del envío",
     contentsIntro:"Galería ilustrativa de los artículos incluidos en este envío.",
@@ -195,32 +167,18 @@ const translations = {
     notAvailable:"Not available",
     estimateNote:"This will be updated once dispatch is confirmed.",
     progressTitle:"Shipment progress",
-    progressNote:"Current shipment journey status.",
-    inFlight:"Currently in flight",
-    inFlightText:"The shipment is currently in flight to Mexico.",
-    inMexico:"Currently in Mexico",
-    inMexicoText:"Your shipment has arrived in Mexico City, Mexico.",
-    stageStarted:"Shipment started",
-    stageStartedNote:"Completed",
-    stageAirport:"At departure airport",
-    stageAirportNote:"Completed",
-    stageFlight:"Currently in flight",
-    stageFlightNote:"Completed",
-    stageMexicoCity:"Currently in Mexico City",
-    stageMexicoCityNote:"Current status",
-    stageHermosillo:"Currently in Hermosillo, Sonora, Mexico",
-    stageHermosilloNote:"Pending",
-    stageCustoms:"Waiting for customs clearance",
-    stageCustomsNote:"Pending",
+    progressNote:"Milestones will update when confirmed information is recorded.",
     stageRegistered:"Shipment registered",
     stageRegisteredNote:"Information received",
     stageCollected:"Collected",
     stageCollectedNote:"Pending",
+    stageTransit:"In transit",
+    stageTransitNote:"Pending",
     stageDestination:"Destination facility",
     stageDestinationNote:"Pending",
     stageDelivery:"Out for delivery",
     stageDeliveryNote:"Pending",
-    stageDelivered:"Package delivered",
+    stageDelivered:"Delivered",
     stageDeliveredNote:"Pending",
     latestUpdate:"Latest update",
     registeredNote:"The shipment is registered. No confirmed transit movements have been recorded yet.",
@@ -248,22 +206,6 @@ const translations = {
     whatsapp:"Contact PRO EX Customer Support on WhatsApp",
     paymentFooter:"PRO EX Customer Support",
     destinationCity:"Hermosillo, Sonora, Mexico",
-    locationEyebrow:"CURRENT SHIPMENT LOCATION",
-    locationTitle:"Currently in Mexico City",
-    locationIntro:"Reference images of Mexico City and the airport arrivals area.",
-    locationCityPhoto:"Mexico City",
-    locationCityCaption:"City view",
-    locationAirportPhoto:"Airport arrivals",
-    locationAirportCaption:"Mexico City International Airport",
-    airportGalleryTitle:"Airport and cargo operations",
-    airportGalleryIntro:"Illustrative images of the airport interior and cargo aircraft.",
-    airportInteriorPhoto:"Airport interior",
-    airportInteriorCaption:"International arrivals area",
-    fedexPlanePhoto:"FedEx Express cargo aircraft",
-    cargoExampleCaption:"Example cargo aircraft; not identified as the aircraft carrying this shipment",
-    cargoHandlingPhoto:"Air cargo operations",
-    cargoHandlingCaption:"Cargo loading and handling on the apron",
-    locationDisclaimer:"These are illustrative location and airport-operation images; they are not photographs of the parcel and do not confirm real-time movement.",
     contentsEyebrow:"SHIPMENT CONTENTS",
     contentsTitle:"Shipment contents",
     contentsIntro:"Photographs of the items and shipping documents included with this shipment.",
@@ -339,32 +281,18 @@ const translations = {
     notAvailable:"Indisponível",
     estimateNote:"Será atualizado quando o despacho for confirmado.",
     progressTitle:"Progresso da remessa",
-    progressNote:"Status atual do percurso da remessa.",
-    inFlight:"Atualmente em voo",
-    inFlightText:"A remessa está atualmente em voo para o México.",
-    inMexico:"Atualmente no México",
-    inMexicoText:"Sua remessa chegou à Cidade do México, México.",
-    stageStarted:"Envio iniciado",
-    stageStartedNote:"Concluído",
-    stageAirport:"No aeroporto de partida",
-    stageAirportNote:"Concluído",
-    stageFlight:"Atualmente em voo",
-    stageFlightNote:"Concluído",
-    stageMexicoCity:"Atualmente na Cidade do México",
-    stageMexicoCityNote:"Status atual",
-    stageHermosillo:"Atualmente em Hermosillo, Sonora, México",
-    stageHermosilloNote:"Pendente",
-    stageCustoms:"Aguardando liberação alfandegária",
-    stageCustomsNote:"Pendente",
+    progressNote:"As etapas serão atualizadas quando houver informações confirmadas.",
     stageRegistered:"Remessa registrada",
     stageRegisteredNote:"Informações recebidas",
     stageCollected:"Coletada",
     stageCollectedNote:"Pendente",
+    stageTransit:"Em trânsito",
+    stageTransitNote:"Pendente",
     stageDestination:"Centro de destino",
     stageDestinationNote:"Pendente",
     stageDelivery:"Saiu para entrega",
     stageDeliveryNote:"Pendente",
-    stageDelivered:"Pacote entregue",
+    stageDelivered:"Entregue",
     stageDeliveredNote:"Pendente",
     latestUpdate:"Última atualização",
     registeredNote:"A remessa está registrada. Ainda não há movimentações de trânsito confirmadas.",
@@ -392,22 +320,6 @@ const translations = {
     whatsapp:"Contatar o suporte ao cliente da PRO EX pelo WhatsApp",
     paymentFooter:"PRO EX Atendimento ao Cliente",
     destinationCity:"Hermosillo, Sonora, México",
-    locationEyebrow:"LOCALIZAÇÃO ATUAL DA REMESSA",
-    locationTitle:"Atualmente na Cidade do México",
-    locationIntro:"Imagens de referência da Cidade do México e da área de chegadas do aeroporto.",
-    locationCityPhoto:"Cidade do México",
-    locationCityCaption:"Vista da cidade",
-    locationAirportPhoto:"Chegadas do aeroporto",
-    locationAirportCaption:"Aeroporto Internacional da Cidade do México",
-    airportGalleryTitle:"Aeroporto e operações de carga",
-    airportGalleryIntro:"Imagens ilustrativas do interior do aeroporto e de aviões cargueiros.",
-    airportInteriorPhoto:"Interior do aeroporto",
-    airportInteriorCaption:"Área de chegadas internacionais",
-    fedexPlanePhoto:"Aeronave cargueira FedEx Express",
-    cargoExampleCaption:"Exemplo de avião cargueiro; não identifica a aeronave desta remessa",
-    cargoHandlingPhoto:"Operações de carga aérea",
-    cargoHandlingCaption:"Carregamento e manuseio de cargas na pista",
-    locationDisclaimer:"Estas são imagens ilustrativas do local e das operações aeroportuárias; não são fotos do pacote e não confirmam movimentação em tempo real.",
     contentsEyebrow:"CONTEÚDO DA REMESSA",
     contentsTitle:"Conteúdo da remessa",
     contentsIntro:"Fotografias dos itens e documentos de envio incluídos nesta remessa.",
@@ -473,6 +385,16 @@ function setLanguage(next) {
   });
 
   $("languageSelect").value = language;
+  $("trackingNumber").placeholder = language === "es"
+    ? "Introduzca su número"
+    : language === "pt"
+      ? "Insira seu número"
+      : "Enter your tracking number";
+  $("trackingPassword").placeholder = language === "es"
+    ? "Introduzca su contraseña"
+    : language === "pt"
+      ? "Insira sua senha"
+      : "Enter your password";
   $("closeModal").setAttribute("aria-label", translations[language].close);
 }
 
@@ -481,7 +403,24 @@ $("languageSelect").addEventListener("change", (event) => {
   setLanguage(event.target.value);
 });
 
-// The shipment dashboard is displayed immediately; no tracking form or credentials are required.\n\n// Open the Start Shipment popup from the dashboard button.
+// Show shipment information only after the tracking ID and password match.
+$("trackForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const id = $("trackingNumber").value.trim().toUpperCase();
+  const password = $("trackingPassword").value;
+
+  if (id === SHIPMENT.trackingId && password === SHIPMENT.password) {
+    $("formError").textContent = "";
+    $("results").hidden = false;
+    $("results").scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    $("results").hidden = true;
+    $("formError").textContent = translations[language].errorCredentials;
+  }
+});
+
+// Open the Start Shipment popup from the dashboard button.
 $("startShipment").addEventListener("click", () => {
   $("paymentModal").hidden = false;
   $("closeModal").focus();
@@ -507,7 +446,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 // Open shipment contents and vehicle photographs in the same accessible image viewer.
-document.querySelectorAll(".contents-gallery .image-slot img, .vehicle-gallery .image-slot img, .location-gallery .location-photo img").forEach((image) => {
+document.querySelectorAll(".contents-gallery .image-slot img, .vehicle-gallery .image-slot img").forEach((image) => {
   image.addEventListener("click", () => {
     $("lightboxImage").src = image.src;
     $("lightboxImage").alt = image.alt;
