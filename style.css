@@ -1267,3 +1267,118 @@ footer {
     height:210px;
   }
 }
+
+/* ==============================
+   LIVE SHIPMENT JOURNEY TIMELINE
+   The flight icon is the only animated timeline element.
+   ============================== */
+.progress-line {
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:10px;
+}
+.progress-step {
+  min-width:0;
+}
+.progress-step b {
+  max-width:100%;
+  line-height:1.35;
+  overflow-wrap:anywhere;
+}
+.progress-step.completed .step-dot {
+  background:#23865a;
+  border-color:#23865a;
+  color:#fff;
+}
+.progress-step.completed b {
+  color:#28734f;
+}
+.progress-step.current .step-dot {
+  position:relative;
+  isolation:isolate;
+  background:var(--purple);
+  border-color:var(--purple);
+  color:#fff;
+  box-shadow:0 0 0 5px #eee5f7;
+}
+.progress-step.current .airplane-dot {
+  font-size:17px;
+  animation:airplane-pop 1.35s ease-in-out infinite;
+}
+.progress-step.current .airplane-dot::after {
+  content:"";
+  position:absolute;
+  inset:-7px;
+  border:2px solid rgba(104,43,157,.62);
+  border-radius:50%;
+  animation:airplane-ring 1.35s ease-out infinite;
+  z-index:-1;
+}
+@keyframes airplane-pop {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.22); }
+}
+@keyframes airplane-ring {
+  0% { transform:scale(.72); opacity:.85; }
+  100% { transform:scale(1.85); opacity:0; }
+}
+@media(max-width:900px) and (min-width:701px) {
+  .progress-line {
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    row-gap:22px;
+  }
+}
+@media(max-width:700px) {
+  .progress-line {
+    grid-template-columns:1fr;
+    gap:0;
+  }
+  .progress-step {
+    grid-template-columns:32px minmax(0,1fr);
+  }
+  .progress-step b {
+    max-width:100%;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .progress-step.current .airplane-dot,
+  .progress-step.current .airplane-dot::after {
+    animation:none;
+  }
+}
+
+/* Mobile layout for the single replacement shipment timeline. */
+@media(max-width:700px) {
+  .progress-line {
+    grid-template-columns:1fr;
+    gap:0;
+    padding:4px 0;
+  }
+  .progress-line:before {
+    left:15px;
+    right:auto;
+    top:18px;
+    bottom:18px;
+    width:3px;
+    height:auto;
+  }
+  .progress-step {
+    display:grid;
+    grid-template-columns:32px minmax(0,1fr);
+    grid-template-rows:auto auto;
+    align-items:center;
+    justify-items:start;
+    column-gap:12px;
+    row-gap:3px;
+    text-align:left;
+    margin:9px 0;
+  }
+  .progress-step .step-dot {
+    grid-column:1;
+    grid-row:1 / span 2;
+  }
+  .progress-step b,
+  .progress-step small {
+    grid-column:2;
+    text-align:left;
+  }
+}
